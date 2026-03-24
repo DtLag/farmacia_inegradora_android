@@ -49,7 +49,6 @@ class ProductViewModel: ViewModel() {
 
             try {
                 val request : ProductRequest = _uiState.value.toProductRequest()
-                val newProduct: Product = repo.addProducts(request) // a revisar
 
             }catch (e:Exception){
 
