@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.farmacia_inegradora_android.ui.DashboardScreen
+import com.example.farmacia_inegradora_android.ui.LoginScreen
 import com.example.farmacia_inegradora_android.ui.theme.Farmacia_inegradora_androidTheme
+import com.example.farmacia_inegradora_android.view_models.LoginViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,29 +18,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Farmacia_inegradora_androidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                val loginViewModel: LoginViewModel = viewModel()
+                val uiState by loginViewModel.uiState.collectAsState()
+
+                if (uiState.isSuccess && uiState.isAdmin) {
+                    DashboardScreen(
+                        userName = uiState.userData?.name ?: "Usuario",
+                        onLogout = { loginViewModel.logout() }
+                    )
+                } else {
+                    LoginScreen(
+                        viewModel = loginViewModel,
+                        onLoginSuccess = {
+                        }
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Farmacia_inegradora_androidTheme {
-        Greeting("Android")
     }
 }
