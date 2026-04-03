@@ -36,4 +36,9 @@ object PharmacyRepository {
         val response : SupplierResponse = Api.getSuppliers()
         return response.suppliers
     }
+
+    suspend fun getInventory(): List<Product> {
+        val response = Api.getInventory()
+        return response.data
+    }
 }

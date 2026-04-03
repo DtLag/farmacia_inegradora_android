@@ -175,7 +175,7 @@ fun DashboardScreen(
 
                     when (currentScreen) {
                         SelectedScreen.HOME -> WelcomeContent(userName, primaryBlue)
-                        SelectedScreen.INVENTORY -> PlaceholderContent("Inventario (Harold)")
+                        SelectedScreen.INVENTORY -> InventoryScreen()
                         SelectedScreen.ADD_PRODUCT -> PlaceholderContent("Añadir Productos (Micky)")
                         SelectedScreen.RECOMMENDATIONS -> PlaceholderContent("Recomendaciones (Yoce)")
                         SelectedScreen.SALES_REPORT -> PlaceholderContent("Reporte de Ventas (Harold)")

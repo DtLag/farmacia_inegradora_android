@@ -100,7 +100,7 @@ fun LoginScreen(
                     value = uiState.email,
                     onValueChange = { viewModel.onEmailChanged(it) },
                     label = { Text("Correo", color = Color.Black) },
-                    placeholder = { Text("admin@gmail.com") },
+                    placeholder = { Text("admin@farmacia.com") },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(

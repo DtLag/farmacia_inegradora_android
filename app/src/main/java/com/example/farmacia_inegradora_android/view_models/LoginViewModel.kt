@@ -27,7 +27,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             val user = sessionManager.getUser()
             _uiState.update { it.copy(
                 isSuccess = true,
-                isAdmin = user?.role == "admin",
+                isAdmin = user?.role == "Administrador",
                 userData = user
             ) }
         }
@@ -64,7 +64,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 val token = response.token
                 
                 if (user != null && token != null) {
-                    if (user.role == "admin") {
+                    if (user.role == "Administrador") {
                         // Guardamos la sesión localmente
                         sessionManager.saveSession(token, user)
                         

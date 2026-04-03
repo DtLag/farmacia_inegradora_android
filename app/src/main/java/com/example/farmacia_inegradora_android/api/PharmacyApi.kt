@@ -3,6 +3,7 @@ package com.example.farmacia_inegradora_android.api
 import com.example.farmacia_inegradora_android.requests.LoginRequest
 import com.example.farmacia_inegradora_android.requests.ProductRequest
 import com.example.farmacia_inegradora_android.responses.CategoryResponse
+import com.example.farmacia_inegradora_android.responses.InventoryResponse
 import com.example.farmacia_inegradora_android.responses.LoginResponse
 import com.example.farmacia_inegradora_android.responses.ProductResponse
 import com.example.farmacia_inegradora_android.responses.SupplierResponse
@@ -28,8 +29,8 @@ interface PharmacyApi {
     @GET("api/categories")
     suspend fun getCategory(): CategoryResponse
 
-    @GET("api/inventory")
-    suspend fun getInventory(): List<ProductResponse>
+    @GET("api/products/search")
+    suspend fun getInventory(): InventoryResponse
 
     @GET("api/recommendations")
     suspend fun getStockRecommendations(): Any 

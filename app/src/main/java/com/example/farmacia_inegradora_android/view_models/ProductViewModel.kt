@@ -7,6 +7,7 @@ import com.example.farmacia_inegradora_android.models.Category
 import com.example.farmacia_inegradora_android.models.Product
 import com.example.farmacia_inegradora_android.models.Supplier
 import com.example.farmacia_inegradora_android.requests.ProductRequest
+import com.example.farmacia_inegradora_android.responses.ProductResponse
 import com.example.farmacia_inegradora_android.ui_state.ProductUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -116,5 +117,4 @@ class ProductViewModel: ViewModel() {
 
         _uiState.update { it.copy(supplier_id = supplier) }
     }
-
 }
