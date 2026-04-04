@@ -178,7 +178,7 @@ fun DashboardScreen(
                         SelectedScreen.INVENTORY -> InventoryScreen()
                         SelectedScreen.ADD_PRODUCT -> PlaceholderContent("Añadir Productos (Micky)")
                         SelectedScreen.RECOMMENDATIONS -> PlaceholderContent("Recomendaciones (Yoce)")
-                        SelectedScreen.SALES_REPORT -> PlaceholderContent("Reporte de Ventas (Harold)")
+                        SelectedScreen.SALES_REPORT -> SalesScreen()
                     }
                 }
             }

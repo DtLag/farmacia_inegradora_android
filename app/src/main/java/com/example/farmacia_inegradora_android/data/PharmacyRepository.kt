@@ -2,6 +2,7 @@ package com.example.farmacia_inegradora_android.data
 
 import com.example.farmacia_inegradora_android.models.Category
 import com.example.farmacia_inegradora_android.models.Product
+import com.example.farmacia_inegradora_android.models.Sale
 import com.example.farmacia_inegradora_android.models.Supplier
 import com.example.farmacia_inegradora_android.requests.LoginRequest
 import com.example.farmacia_inegradora_android.requests.ProductRequest
@@ -39,6 +40,11 @@ object PharmacyRepository {
 
     suspend fun getInventory(): List<Product> {
         val response = Api.getInventory()
+        return response.data
+    }
+
+    suspend fun getSales(token: String): List<Sale> {
+        val response = Api.getSalesReport("Bearer $token")
         return response.data
     }
 }

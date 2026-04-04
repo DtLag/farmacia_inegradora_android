@@ -6,9 +6,12 @@ import com.example.farmacia_inegradora_android.responses.CategoryResponse
 import com.example.farmacia_inegradora_android.responses.InventoryResponse
 import com.example.farmacia_inegradora_android.responses.LoginResponse
 import com.example.farmacia_inegradora_android.responses.ProductResponse
+import com.example.farmacia_inegradora_android.responses.SalesResponse
 import com.example.farmacia_inegradora_android.responses.SupplierResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface PharmacyApi {
@@ -33,9 +36,9 @@ interface PharmacyApi {
     suspend fun getInventory(): InventoryResponse
 
     @GET("api/recommendations")
-    suspend fun getStockRecommendations(): Any 
+    suspend fun getStockRecommendations(): Any
 
-    @GET("api/reports/sales")
-    suspend fun getSalesReport(): Any
-
+    @Headers("Accept: application/json")
+    @GET("api/reports/sales-and-orders")
+    suspend fun getSalesReport(@Header("Authorization") token: String): SalesResponse
 }
