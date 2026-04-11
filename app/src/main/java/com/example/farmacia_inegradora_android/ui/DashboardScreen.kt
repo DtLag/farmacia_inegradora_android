@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.farmacia_inegradora_android.view_models.RestockViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -34,7 +36,9 @@ fun DashboardScreen(
     val scope = rememberCoroutineScope()
     var currentScreen by remember { mutableStateOf(SelectedScreen.HOME) }
     var isLoadingScreen by remember { mutableStateOf(false) }
-    
+    val restockViewModel: RestockViewModel = viewModel()
+    val restockUIState by restockViewModel.uiState.collectAsState()
+
     val primaryBlue = Color(0xFF3B5BA9)
     val lightBackground = Color(0xFFF5F7FA)
 
@@ -177,7 +181,11 @@ fun DashboardScreen(
                         SelectedScreen.HOME -> WelcomeContent(userName, primaryBlue)
                         SelectedScreen.INVENTORY -> InventoryScreen()
                         SelectedScreen.ADD_PRODUCT -> PlaceholderContent("Añadir Productos (Micky)")
-                        SelectedScreen.RECOMMENDATIONS -> PlaceholderContent("Recomendaciones (Yoce)")
+                        SelectedScreen.RECOMMENDATIONS -> {
+                            RestockProjectionScreen(
+                                uiState = restockUIState
+                            )
+                        }
                         SelectedScreen.SALES_REPORT -> SalesScreen()
                     }
                 }
