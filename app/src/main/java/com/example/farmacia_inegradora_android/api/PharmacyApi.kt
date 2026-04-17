@@ -41,6 +41,6 @@ interface PharmacyApi {
     @GET("api/reports/sales-and-orders")
     suspend fun getSalesReport(@Header("Authorization") token: String): SalesResponse
 
-    @GET("api/report/recommendations")
+    @GET("api/report/restock-projection")
     suspend fun getStockRecommendations(): RestockResponse
 }

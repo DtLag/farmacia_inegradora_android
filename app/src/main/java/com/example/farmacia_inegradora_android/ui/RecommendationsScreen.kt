@@ -1,6 +1,7 @@
 package com.example.farmacia_inegradora_android.ui
 
 
+import android.R.attr.fontWeight
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -262,12 +263,7 @@ fun RestockProjectionCard(item: RestockItem) {
                     color = TextGray
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = item.importancia.uppercase(),
-                    style = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = BluePrimary
-                )
+
             }
 
             Text(
